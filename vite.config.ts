@@ -10,13 +10,20 @@ function pathResolve(dir: string) {
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue(), cesium(), vuetify()],
+  plugins: [
+    vue(),
+    cesium(),
+    vuetify({
+      styles: "sass",
+      autoImport: true
+    })
+  ],
   resolve: {
     alias: [
       {
         find: "@",
-        replacement: pathResolve("src"),
-      },
-    ],
-  },
+        replacement: pathResolve("src")
+      }
+    ]
+  }
 });

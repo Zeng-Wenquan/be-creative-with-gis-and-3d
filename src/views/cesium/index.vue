@@ -4,7 +4,7 @@ import CesiumMap from "@/components/@cesium/CesiumMap.vue";
 
 <template>
   <div class="cesium-app-container">
-    <CesiumMap />
+    <CesiumMap></CesiumMap>
   </div>
 </template>
 
@@ -12,5 +12,8 @@ import CesiumMap from "@/components/@cesium/CesiumMap.vue";
 .cesium-app-container {
   height: 100%;
   position: relative;
+  .left {
+    width: 360px;
+  }
 }
 </style>

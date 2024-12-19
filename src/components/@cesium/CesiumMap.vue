@@ -1,17 +1,21 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, PropType, ref } from "vue";
 import * as Cesium from "cesium";
 import { defaultViewerOption } from "@/utils/constant";
 
 const props = defineProps({
+  options: {
+    type: Object as PropType<any>,
+    default: () => ({})
+  },
   width: {
     type: String,
-    default: "100%",
+    default: "100%"
   },
   height: {
     type: String,
-    default: "100%",
-  },
+    default: "100%"
+  }
 });
 
 const container = `viewer-${+new Date()}`;
@@ -28,6 +32,7 @@ const init = async () => {
         "./images/GlobalBkLayer1.jpg"
       )
     ),
+    ...props.options
   });
 
   viewObj.viewer = viewer;
@@ -61,5 +66,7 @@ onMounted(() => {
   top: 0;
   left: 0;
   pointer-events: none;
+  z-index: 1;
+  color: #fff;
 }
 </style>
