@@ -1,10 +1,13 @@
 <script lang="ts" setup>
 import CesiumMap from "@/components/@cesium/CesiumMap.vue";
+import ModelTransform from "@/views/cesium/examples/ModelTransform.vue";
 </script>
 
 <template>
   <div class="cesium-app-container">
-    <CesiumMap></CesiumMap>
+    <CesiumMap>
+      <ModelTransform />
+    </CesiumMap>
   </div>
 </template>
 
