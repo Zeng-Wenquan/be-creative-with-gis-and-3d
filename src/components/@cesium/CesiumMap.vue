@@ -18,10 +18,17 @@ const props = defineProps({
   }
 });
 
+const emits = defineEmits(["ready"]);
+
 const container = `viewer-${+new Date()}`;
-const viewObj: any = {};
 
 const loaded = ref(false);
+
+function isMobile() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  );
+}
 
 const init = async () => {
   const viewer = new Cesium.Viewer(container, {
@@ -35,9 +42,19 @@ const init = async () => {
     ...props.options
   });
 
-  viewObj.viewer = viewer;
-
   loaded.value = true;
+  emits("ready", viewer);
+  if (!isMobile()) {
+    viewer.scene.screenSpaceCameraController.zoomEventTypes = [
+      Cesium.CameraEventType.WHEEL,
+      Cesium.CameraEventType.PINCH
+    ];
+    // 鼠标右键旋转
+    viewer.scene.screenSpaceCameraController.tiltEventTypes = [
+      Cesium.CameraEventType.RIGHT_DRAG,
+      Cesium.CameraEventType.PINCH
+    ];
+  }
 };
 
 onMounted(() => {

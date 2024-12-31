@@ -8,31 +8,31 @@ const routes: RouteRecordRaw[] = [
     children: [
       {
         path: "/cesium",
-        component: () => import("@/views/cesium/index.vue"),
+        component: () => import("@/views/cesium/index.vue")
       },
       {
         path: "/threejs",
-        component: () => import("@/views/threejs/index.vue"),
+        component: () => import("@/views/threejs/index.vue")
       },
       {
         path: "/babylonjs",
-        component: () => import("@/views/babylonjs/index.vue"),
+        component: () => import("@/views/babylonjs/index.vue")
       },
       {
         path: "/leaflet",
-        component: () => import("@/views/leaflet/index.vue"),
+        component: () => import("@/views/leaflet/index.vue")
       },
       {
         path: "/maplibregl",
-        component: () => import("@/views/maplibregl/index.vue"),
-      },
-    ],
-  },
+        component: () => import("@/views/maplibregl/index.vue")
+      }
+    ]
+  }
 ];
 
 const router = createRouter({
   routes,
-  history: createWebHashHistory(),
+  history: createWebHashHistory()
 });
 
 export default router;

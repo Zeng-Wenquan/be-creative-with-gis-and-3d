@@ -29,5 +29,8 @@ export default defineConfig({
         replacement: pathResolve("src")
       }
     ]
+  },
+  server: {
+    host: true
   }
 });
